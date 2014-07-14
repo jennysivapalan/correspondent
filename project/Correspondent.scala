@@ -2,7 +2,6 @@ import sbt._
 import sbt.Keys._
 
 import play._
-import sbtbuildinfo.Plugin._
 
 trait Correspondent {
 
