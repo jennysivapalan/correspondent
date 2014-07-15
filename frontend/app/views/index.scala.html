@@ -1,4 +1,6 @@
-@()(implicit request: play.api.mvc.Request[_])
+@(bundle: model.Bundle)(implicit request: play.api.mvc.Request[_])
 
 Hello world
 
+@bundle.heading
+@bundle.mainImage
