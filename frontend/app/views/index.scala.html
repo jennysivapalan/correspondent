@@ -5,7 +5,6 @@
 <head>
     <title>Guardian Correspondent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- boilerplate -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@@guardian" />
@@ -28,7 +27,7 @@
         <span class="logo">Guardian Correspondent</span>
         <h1>Le Tour de France 2014 &ndash; why Wiggo would've (almost certainly) won</h1>
         <h2>A roundup of the stupid decisions by Team Sky which led to their leader crashing out on stage five</h2>
-        <header>
+        <header style="background-image: url(@Html(bundle.mainImage))">
             <h3><span>by @author.name</span></h3>
         </header>
 
@@ -63,8 +62,10 @@
             <div class="articles">
 
       @for(blk <- bundle.blocks) {
-                  <article id="item-1">
-		    <div class="blocktype-@blk.elementType">@Html(blk.html)</div>
+                  <article id="@blk.id">
+		    @for(elm <- blk.elements) {
+		    <div class="blocktype-@elm.elementType">@elm.html.map(Html(_))</div>
+		    }
                 </article> <!-- end of single article -->
       }
 
