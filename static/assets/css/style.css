@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    line-height: 1.5;
+}
+
+header {
+    background-image: url(../img/header.jpg);
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    background-color: #0F630F;
+    color: #FFF;
+    padding: 20px 10px;
+    text-align: center;
+    line-height: 1.3;
+    border-bottom: 4px solid #1F551F;
+}
+
+h2 {
+    background-color: #333;
+    color: #DFDFDF;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 0.9rem;
+    border-bottom: 4px solid #535353;
+}
+
+h3 {
+    display: inline-block;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+}
+
+h3 span {
+    background-color: #131313;
+    padding: 5px 10px;
+    color: #FFF;
+    font-size: 0.6rem;
+    border-radius: 3px;
+    font-family: 'Merriweather Sans';
+}
+
+/* i now regret this decision -MA */
+p {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #B92929;
+}
+
+aside {
+    float: left;
+    padding-left: 20px;
+    width: 20%;
+}
+
+.content {
+    float: right;
+    width: 80%;
+    padding-right: 20px;
+}
+
+aside ol {
+    color: #ccc;
+    font-family: 'Merriweather Sans';
+    font-size: 0.8rem;
+}
+
+
+aside ol li {
+    list-style-type: decimal;
+    list-style-position: initial;
+    margin: 10px 20px 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+aside ol li:first-child {
+    margin-top: 0;
+}
+
+aside ol a {
+    color: #666;
+    display: block;
+}
+
+aside ol a:hover {
+    color: #B11919;
+}
+
+.articles {
+    float: left;
+    width: 70%;
+}
+
+.articles p {
+    color: #333;
+    font-size: 1.03rem;
+    line-height: 1.8rem;
+}
+
+.articles a {
+    color: #B92929;
+}
+
+
+.articles h4 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.articles h5 {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.correspondent {
+    float: right;
+    width: 25%;
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+.correspondent .avatar {
+    width: 60px;
+}
+
+.correspondent h4 {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.correspondent p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.stats {
+    margin-top: 10px;
+}
+
+.stats li {
+    float: left;
+    width: 33%;
+    text-align: center;
+    font-family: 'Merriweather Sans';
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.stats li.middle {
+    border: 2px solid #E0E0E0;
+    border-top: none;
+    border-bottom: none
+}
+
+.stats span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #333;
+
+}
+
+/* media object */
+
+.media,
+.bd {
+    overflow: hidden;
+    _overflow: visible;
+    zoom:1;
+}
+
+.media .img {
+    float: left;
+    margin-right: 10px;
+}
+
+.media .img img {
+    display: block;
+}
+
+.media .imgExt {
+    float: right;
+    margin-left: 10px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    border-top: 1px solid #CCC;
+    background-color: #EEE;
+    padding: 20px;
+    font-family: 'Merriweather Sans';
+    font-size: 0.7rem
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+/* full logo */
+.logo {
+    background-image: url(../img/logo-sprite.png);
+    text-indent: -1000em;
+    display: block;
+    background-repeat: no-repeat;
+    width: 169px;
+    height: 36px;
+    position: absolute;
+    top: 14px;
+    left: 10px;
+}
+
+/* resetting above, this is ugly */
+h1 {
+    padding-left: 190px;
+    padding-right: 190px;
+}
+
+/* LET'S MAKE THIS SHIT RESPONSIVE */
+
+@media screen and (max-width: 950px) {
+
+    .correspondent {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .correspondent h4 {
+        margin-bottom: 5px;
+    }
+
+    .correspondent .media {
+        float: left;
+        width: 50%;
+    }
+
+    .correspondent .stats {
+        overflow: hidden;
+        float: right;
+        width: 50%;
+        margin-top: -13px
+    }
+
+    .articles {
+        width: 100%;
+    }
+
+    aside {
+        width: 30%;
+    }
+
+    .content {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    /* small logo */
+    .logo {
+        background-position: 0px -39px;
+        width: 60px;
+        height: 39px;
+    }
+
+    h1 {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    aside {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    header { height: 300px; }
+}
+
+@media screen and (max-width: 470px) {
+
+    header { height: 200px; }
+
+    .correspondent .media {
+        float: none;
+        width: 100%;
+    }
+
+    .correspondent .stats {
+        float: none;
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 340px) {
+
+    header { height: 180px; }
+
+}
