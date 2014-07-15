@@ -17,7 +17,8 @@ trait FrontPage extends Controller {
   def index = Action.async { implicit request =>
       WS.url(getBundle()).get().map { response =>
         val json = (response.json) \ "data"
-        val headline = (json \ "fields" \ "headline" \ "data" )
+        val headline = (json \ "fields" \ "headline" \ "data" ).asOpt[String]
+        val standfirst = (json \ "fields" \ "standfirst" \ "data" ).asOpt[String]
         val mainBlock = (json \ "mainBlock" \ "data" \ "elements")(0) //assumes first block is image
         val images = (mainBlock \ "assets").as[Seq[JsValue]]
 
@@ -47,7 +48,7 @@ trait FrontPage extends Controller {
           }
           new Block(id, elements.toList)
         }
-        val bundle = new Bundle(Json.stringify(headline), Json.stringify(image(0) \ "url"), keyEvents.toList, blocks.toList)
+        val bundle = new Bundle(headline, standfirst, Json.stringify(image(0) \ "url"), keyEvents.toList, blocks.toList)
 
         Ok(views.html.index(bundle, testAuthor))
 

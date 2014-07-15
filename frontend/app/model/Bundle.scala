@@ -1,7 +1,7 @@
 package model
 
 
-case class Bundle(heading:String, mainImage: String, keyEvents: List[KeyEvent], blocks:  List[Block])
+case class Bundle(heading:Option[String], standfirst: Option[String], mainImage: String, keyEvents: List[KeyEvent], blocks:  List[Block])
 
 case class KeyEvent(id: String, title:Option[String])
 
