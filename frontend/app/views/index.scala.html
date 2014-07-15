@@ -59,5 +59,23 @@
                     <li><span>@author.stats.following</span> following</li>
                 </ul>
             </div>
+
+            <div class="articles">
+
+      @for(blk <- bundle.blocks) {
+                  <article id="item-1">
+		    <div class="blocktype-@blk.elementType">@Html(blk.html)</div>
+                </article> <!-- end of single article -->
+      }
+
+            </div> <!-- end of article container -->
+        </div> <!-- end of whole content area -->
+
+        <footer>
+            <p>&copy; A Guardian Hack Day project by Paul Roberts, Jenny Sivapalan and Matt Andrews</p>
+        </footer>
+
+    </div>  <!-- end of global container -->
+
   </body>
 </html>
