@@ -71,7 +71,7 @@
 		    @for(elm <- blk.elements) {
 <div class="blocktype-@elm.elementType">
   @elm.text.map(txt => Html("<div class='caption'>" + txt + "</div>"))
-				@elm.headline.map(Html(_))
+				@elm.headline.map(txt => Html("<h4>" + txt + "</h4>"))
 				@elm.html.map(Html(_))
 </div>
 		    }
