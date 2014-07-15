@@ -5,7 +5,7 @@ case class Bundle(heading:Option[String], standfirst: Option[String], keyEvents:
 
 case class KeyEvent(id: String, title:Option[String])
 
-case class Block(id:String, elements: List[Element])
+case class Block(id:String, title:Option[String], elements: List[Element])
 
 case class Element(elementType: String,
                    text: Option[String],

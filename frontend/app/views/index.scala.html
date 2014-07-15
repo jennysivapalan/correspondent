@@ -67,12 +67,12 @@
             <div class="articles">
 
       @for(blk <- bundle.blocks.reverse) {
-                  <article id="@blk.id">
+                  <article id="@blk.id"><h4>@blk.title</h4>
 		    @for(elm <- blk.elements) {
 <div class="blocktype-@elm.elementType">
   @elm.text.map(txt => Html("<div class='caption'>" + txt + "</div>"))
 @elm.originalUrl.map(txt => Html("<a class='article-link' href='" + txt + "'>read article</a>"))
-				@elm.headline.map(txt => Html("<h4>" + txt + "</h4>"))
+				@elm.headline.map(txt => Html("<h5>" + txt + "</h5>"))
 				@elm.html.map(Html(_))
 </div>
 		    }

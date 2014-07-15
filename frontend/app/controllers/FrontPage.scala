@@ -36,6 +36,8 @@ trait FrontPage extends Controller {
         val blocks = dataBlocks.map {block =>
           val id = Json.stringify(block \ "data" \ "id")
           val elementsData = (block \ "data" \ "elements").as[Seq[JsValue]]
+          val title =(block \ "data" \ "attributes" \ "title").asOpt[String]
+
           val elements = elementsData.map {
             e =>
             val elementType = Json.stringify(e \ "elementType")
@@ -46,7 +48,7 @@ trait FrontPage extends Controller {
             new Element(elementType, text, html, headline, originalUrl )
 
           }
-          new Block(id, elements.toList)
+          new Block(id, title, elements.toList)
         }
         val bundle = new Bundle(headline, standfirst, keyEvents.toList, blocks.toList)
 
