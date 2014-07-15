@@ -15,11 +15,10 @@ trait FrontPage extends Controller {
       WS.url(getBundle()).get().map { response =>
         val json = (response.json) \ "data"
         val headline = (json \ "fields" \ "headline" \ "data" )
-        val images = (json \ "thumbnail" \ "data" \ "assets").as[Seq[JsValue]]
-        println(images(6) \ "fields" \ "width")
+        val mainBlock = (json \ "mainBlock" \ "data" \ "elements")(0) //assumes first block is image
+        val images = (mainBlock \ "assets").as[Seq[JsValue]]
 
-        val image = images.filter( image => (image \ "fields" \ "width").asOpt[String].exists( _ == "540"))
-        println(image)
+        val image = images.filter( image => (image \ "fields" \ "width").asOpt[String].exists( _ == "620"))
         val bundle = new Bundle(Json.stringify(headline), Json.stringify(image(0) \ "url"), Nil, Nil)
 
         Ok(views.html.index(bundle))
