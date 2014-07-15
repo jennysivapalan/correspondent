@@ -4,3 +4,6 @@
 
 # Home page
 GET         /   controllers.FrontPage.index
+
+GET  /assets/*file         controllers.Assets.at(path="/public", file)
+

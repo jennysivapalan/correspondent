@@ -4,12 +4,22 @@
 <html>
   <head>
     <title>Correspondent Demo</title>
+    <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/styles.css")'>
   </head>
 
   <body>
     <div class="col-lh">
+      <ul>
+      @for(ke <- bundle.keyEvents) {
+        <li><a href="#@ke.id">@ke.title</a></li>
+      }
+      </ul>
     </div>
     <div class="col-rh">
+      @for(blk <- bundle.blocks) {
+         <a name="@blk.id"/></a>
+         <div class="blocktype-@blk.elementType">@Html(blk.html)</div>
+      }
     </div>
   </body>
 </html>
