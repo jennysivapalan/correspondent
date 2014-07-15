@@ -31,7 +31,6 @@
         <span class="logo">Guardian Correspondent</span>
         <h1>@{if(bundle.heading.isEmpty) "Correspondent" else bundle.heading.get}</h1>
         @bundle.standfirst.map(txt => Html("<h2>" + stripHtml(txt) + "</h2>"))
-<!--        <header style="background-image: url(@Html(bundle.mainImage))"> -->
         <header style="background-image: url(@routes.Assets.at("img/header.jpg"))">
             <h3><span>by @author.name</span></h3>
         </header>
