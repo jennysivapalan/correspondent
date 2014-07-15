@@ -242,6 +242,13 @@ h1 {
     padding-right: 190px;
 }
 
+.caption {
+    margin-left: 5%;
+    padding-left: 5%;
+    font-style: italic;
+    border-left: 1px dotted black;
+}
+
 /* LET'S MAKE THIS SHIT RESPONSIVE */
 
 @media screen and (max-width: 950px) {

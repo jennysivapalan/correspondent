@@ -8,3 +8,4 @@ GET         /   controllers.FrontPage.index
 GET  /assets/*file         controllers.Assets.at(path="/public", file)
 
 GET /favicon.ico           controllers.Assets.at(path="/public", file="img/favicon.ico")
+GET /favicon.png           controllers.Assets.at(path="/public", file="img/favicon.png")

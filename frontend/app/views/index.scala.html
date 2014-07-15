@@ -39,10 +39,9 @@
 
         <aside>
             <ol>
-	      @for(ke <- bundle.keyEvents) {
+	      @for(ke <- bundle.keyEvents.reverse) {
 			 <li><a href="#@ke.id">@ke.title</a></li>
               }
-                <li><a href="#item-1">The pre-Tour favourites</a></li>
             </ol>
         </aside>
 
@@ -67,10 +66,14 @@
 
             <div class="articles">
 
-      @for(blk <- bundle.blocks) {
+      @for(blk <- bundle.blocks.reverse) {
                   <article id="@blk.id">
 		    @for(elm <- blk.elements) {
-		    <div class="blocktype-@elm.elementType">@elm.html.map(Html(_))</div>
+<div class="blocktype-@elm.elementType">
+  @elm.text.map(txt => Html("<div class='caption'>" + txt + "</div>"))
+				@elm.headline.map(Html(_))
+				@elm.html.map(Html(_))
+</div>
 		    }
                 </article> <!-- end of single article -->
       }
