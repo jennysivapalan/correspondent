@@ -1,4 +1,82 @@
-@(bundle: model.Bundle)(implicit request: play.api.mvc.Request[_])
+@import model._
+@(bundle: Bundle, author: Author)(implicit request: play.api.mvc.Request[_])
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guardian Correspondent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- boilerplate -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@@guardian" />
+    <meta property="og:site_name" content="The Guardian" />
+    <meta property="og:type" content="article" />
 
-Hello world
+    <!-- these should be customised -->
+    <meta name="description" content="desc" />
+    <meta property="og:url" content="foo" />
+    <meta property="og:title" content="title" />
+    <meta property="og:description" content="desc" />
 
+    <link rel="stylesheet" type="text/css" media="screen" href='@routes.Assets.at("stylesheets/reset.css")'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,900,700,700italic,400italic|Merriweather+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" media="screen" href='@routes.Assets.at("stylesheets/style.css")'>
+
+</head>
+  <body>
+    <div class="container">
+        <span class="logo">Guardian Correspondent</span>
+        <h1>Le Tour de France 2014 &ndash; why Wiggo would've (almost certainly) won</h1>
+        <h2>A roundup of the stupid decisions by Team Sky which led to their leader crashing out on stage five</h2>
+        <header style="background-image: url(@Html(bundle.mainImage))">
+            <h3><span>by @author.name</span></h3>
+        </header>
+
+        <aside>
+            <ol>
+	      @for(ke <- bundle.keyEvents) {
+			 <li><a href="#@ke.id">@ke.title</a></li>
+              }
+                <li><a href="#item-1">The pre-Tour favourites</a></li>
+            </ol>
+        </aside>
+
+        <div class="content">
+
+            <div class="correspondent">
+                <h4>@author.name</h4>
+                <div class="media">
+                    <a href="#" class="img">
+                        <img src="@author.avatarUrl" class="avatar" />
+                    </a>
+                    <div class="bd">
+                        <p>@author.profile</p>
+                    </div>
+                </div>
+                <ul class="stats">
+                    <li><span>@author.stats.bundles</span> bundles</li>
+                    <li class="middle"><span>@author.stats.followers</span> followers</li>
+                    <li><span>@author.stats.following</span> following</li>
+                </ul>
+            </div>
+
+            <div class="articles">
+
+      @for(blk <- bundle.blocks) {
+                  <article id="@blk.id">
+		    @for(elm <- blk.elements) {
+		    <div class="blocktype-@elm.elementType">@elm.html.map(Html(_))</div>
+		    }
+                </article> <!-- end of single article -->
+      }
+
+            </div> <!-- end of article container -->
+        </div> <!-- end of whole content area -->
+
+        <footer>
+            <p>&copy; A Guardian Hack Day project by Paul Roberts, Jenny Sivapalan and Matt Andrews</p>
+        </footer>
+
+    </div>  <!-- end of global container -->
+
+  </body>
+</html>

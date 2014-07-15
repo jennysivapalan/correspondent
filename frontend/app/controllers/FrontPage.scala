@@ -5,13 +5,16 @@ import configuration.Config
 import scala.concurrent.ExecutionContext.Implicits.global
 import play.api.libs.ws.WS
 import play.api.Play.current
-import model._
 import play.api.libs.json._
-
+import model._
 
 trait FrontPage extends Controller {
 
-    def index = Action.async { implicit request =>
+	val testAuthor = Author("Matt Andrews",
+							"Matt is a web developer at the Guardian and definitely isn't just making up this bio for a hack day demo.",
+							Stats(11, 43, 19), "assets/img/avatar.jpg")
+
+  def index = Action.async { implicit request =>
       WS.url(getBundle()).get().map { response =>
         val json = (response.json) \ "data"
         val headline = (json \ "fields" \ "headline" \ "data" )
@@ -46,7 +49,7 @@ trait FrontPage extends Controller {
         }
         val bundle = new Bundle(Json.stringify(headline), Json.stringify(image(0) \ "url"), keyEvents.toList, blocks.toList)
 
-        Ok(views.html.index(bundle))
+        Ok(views.html.index(bundle, testAuthor))
 
       }
   }
