@@ -132,7 +132,8 @@ aside ol a:hover {
 
 .articles h5 {
     font-size: 0.9rem;
-    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
     color: #666;
     margin-bottom: 10px;
 }
