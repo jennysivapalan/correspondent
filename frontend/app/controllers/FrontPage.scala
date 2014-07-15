@@ -8,6 +8,10 @@ import play.api.Play.current
 import play.api.libs.json._
 import model._
 
+object Util {
+	def stripHtml(s: String) = s.replaceAll("</?[A-Za-z]+>", "")
+}
+
 trait FrontPage extends Controller {
 
 	val testAuthor = Author("Matt Andrews",
